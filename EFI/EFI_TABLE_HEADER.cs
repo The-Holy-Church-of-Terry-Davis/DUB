@@ -1,3 +1,8 @@
+using System;
+using System.Runtime.InteropServices;
+
+namespace DUM.EFI;
+
 [StructLayout(LayoutKind.Sequential)]
 readonly struct EFI_TABLE_HEADER
 {
