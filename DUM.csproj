@@ -11,7 +11,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 
-    <IlcSystemModule>efinoruntime</IlcSystemModule>
+    <IlcSystemModule>DUM</IlcSystemModule>
     <EntryPointSymbol>EfiMain</EntryPointSymbol>
     <LinkerSubsystem>EFI_APPLICATION</LinkerSubsystem>
 
