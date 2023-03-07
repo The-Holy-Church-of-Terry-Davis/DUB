@@ -1,6 +1,6 @@
 namespace DUM.NativeMem;
 
-public unsafe struct Block
+public unsafe struct Block<T> where T: unmanaged
 {
     public long _start { get; set; }
     public long _end  { get; set; }
