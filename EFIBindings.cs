@@ -35,12 +35,11 @@ namespace System
 
     public struct Nullable<T> where T : struct { }
 
-    public sealed class String 
-    { 
-        public readonly int Length;
+    public abstract class Array 
+    {
+        public int Length;
     }
 
-    public abstract class Array { }
     public abstract class Delegate { }
     public abstract class MulticastDelegate : Delegate { }
 
@@ -117,7 +116,7 @@ namespace System
         }
     }
 
-    class Array<T> : Array { }
+    public class Array<T> : Array { }
 }
 
 namespace Internal.Runtime.CompilerHelpers
