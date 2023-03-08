@@ -18,7 +18,7 @@ namespace System;
     List<T>.GetSize() will have to be implemented
     inside of the Kernel as an extension method.
 */
-public unsafe struct List<T> where T: unmanaged
+public unsafe struct List<T>
 {
     private T[] addrs { get; set; }
     public int Length = 0;
