@@ -20,10 +20,10 @@ dotnet publish -p:BuildVHDX=true
 
 # How do I get around C#'s GC?
 
-I had this question/problem for a very long time while
-developing <a>Ellie</a>. I finally figured out a solution
-and implemented it in <a>HVCPU's</a> Memory library. Keep
-in mind that HVCPU's No-Runtime library is not recommended
-for use on systems with a Kernel; You will likely end with
-a segfault. However, without an OS, HVCPU will set up a
-stack, heap, and GC (WITH MANAGED POINTERS!!!!) for you!
+C#'s GC shouldn't run or mess with unmanaged code. You should
+be able to just directly set addresses to values. However, if
+you are looking for something to help you manage your memory,
+you can reference <a>Ellie's</a> kernel or <a>HVCPU's</a> GC.
+Note that neither of these are recommended for use within an
+operating system due to the fact that you will likely end with
+a segfault.
