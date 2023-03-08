@@ -34,7 +34,11 @@ public unsafe struct List<T>
         }
     }
 
-    public List() { }
+    public List(int init_len) 
+    { 
+        addrs = new T[init_len];
+        Length = init_len;
+    }
 
     public void Add(T obj)
     {
@@ -55,4 +59,51 @@ public unsafe struct List<T>
         Block<T> blk = *(Block<T> *)addr;
     }
 */
+}
+
+public static class ListExtensions
+{
+    public static List<char> AsList(this char[] vals)
+    {
+        List<char> ret = new List<char>(vals.Length);
+        for(int i = 0; i < vals.Length; i++)
+        {
+            ret.Add(vals[i]);
+        }
+
+        return ret;
+    }
+
+    public static List<int> AsList(this int[] vals)
+    {
+        List<int> ret = new List<int>(vals.Length);
+        for(int i = 0; i < vals.Length; i++)
+        {
+            ret.Add(vals[i]);
+        }
+
+        return ret;
+    }
+
+    public static List<long> AsList(this long[] vals)
+    {
+        List<long> ret = new List<long>(vals.Length);
+        for(int i = 0; i < vals.Length; i++)
+        {
+            ret.Add(vals[i]);
+        }
+
+        return ret;
+    }
+
+    public static List<byte> AsList(this byte[] vals)
+    {
+        List<byte> ret = new List<byte>(vals.Length);
+        for(int i = 0; i < vals.Length; i++)
+        {
+            ret.Add(vals[i]);
+        }
+
+        return ret;
+    }
 }

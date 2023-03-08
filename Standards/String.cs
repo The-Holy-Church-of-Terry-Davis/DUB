@@ -85,12 +85,21 @@ public unsafe class String
     public static explicit operator String(char[] val)
     {
         String ret = "";
-
+        ret.Length = val.Length;
+        
         for(int i = 0; i < val.Length; i++)
         {
-            ret = ret + val[i];
+            ret[i] = val[i];
         }
 
         return ret;
+    }
+}
+
+public static class StringExtensions
+{
+    public static String AsStr(char[] val)
+    {
+        return (String)val;
     }
 }
