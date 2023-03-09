@@ -31,6 +31,13 @@ public unsafe struct List<T> where T: unmanaged
         Collection<T> coll = new Collection<T>(addr, length);
     }
 
+    public void Add(T item, long new_addr)
+    {
+        Collection<T> newColl = new Collection<T>(new_addr, Length + 1);
+        newColl[Length] = item;
+        _coll = newColl;
+    }
+
 /*
     Ellie notes:
 
