@@ -1,10 +1,19 @@
 namespace System;
 
+
+/*
+    This type of string is only meant to be baked into
+    the built executable. Please use my new solution
+    to managing character arrays which is Str.cs
+*/
 public unsafe class String
 { 
-    private char *ptr { get; set; }
-    public int Length;
+    /*
+    private char *ptr { get; set; }*/
+    public readonly int Length;
 
+
+    /*
     public char this[int index]
     {
         get {
@@ -93,13 +102,15 @@ public unsafe class String
         }
 
         return ret;
-    }
+    }*/
 }
 
+
+/*
 public static class StringExtensions
 {
     public static String AsStr(char[] val)
     {
         return (String)val;
     }
-}
+}*/

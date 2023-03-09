@@ -1,8 +1,11 @@
 using DUM.NativeMem;
+using System.Collections;
 
 namespace System;
 
 /*
+    [DYSFUNCTIONAL] In process of rewriting
+
     Ellie notes:
 
     In order to get the size of type List<T>
@@ -18,92 +21,28 @@ namespace System;
     List<T>.GetSize() will have to be implemented
     inside of the Kernel as an extension method.
 */
-public unsafe struct List<T>
+public unsafe struct List<T> where T: unmanaged
 {
-    private T[] addrs { get; set; }
-    public int Length = 0;
+    private Collection<T> _coll { get; set; }
+    public int Length => _coll.Length;
 
-    public T this[int index]
+    public List(long addr, int length)
     {
-        get {
-            return addrs[index];
-        }
-
-        set {
-            addrs[index] = value;
-        }
-    }
-
-    public List(int init_len) 
-    { 
-        addrs = new T[init_len];
-        Length = init_len;
-    }
-
-    public void Add(T obj)
-    {
-        addrs = new T[Length + 1];
-        addrs[Length] = obj;
-
-        Length++;
+        Collection<T> coll = new Collection<T>(addr, length);
     }
 
 /*
     Ellie notes:
 
-    This method will need to be implemented as an extension method in the Kernel
+    These methods will need to be implemented as an extension methods in the Kernel
     
+    public void Add(T item) { }
+    public void AddRange(Collection<T> items) { }
+
     public Block<T> AsBlock(long addr)
     {
         *(Block<T> *)addr = new(addr, addr + sizeof(Block<T>)); //This cannot be done since it may overwrite memory
         Block<T> blk = *(Block<T> *)addr;
     }
 */
-}
-
-public static class ListExtensions
-{
-    public static List<char> AsList(this char[] vals)
-    {
-        List<char> ret = new List<char>(vals.Length);
-        for(int i = 0; i < vals.Length; i++)
-        {
-            ret.Add(vals[i]);
-        }
-
-        return ret;
-    }
-
-    public static List<int> AsList(this int[] vals)
-    {
-        List<int> ret = new List<int>(vals.Length);
-        for(int i = 0; i < vals.Length; i++)
-        {
-            ret.Add(vals[i]);
-        }
-
-        return ret;
-    }
-
-    public static List<long> AsList(this long[] vals)
-    {
-        List<long> ret = new List<long>(vals.Length);
-        for(int i = 0; i < vals.Length; i++)
-        {
-            ret.Add(vals[i]);
-        }
-
-        return ret;
-    }
-
-    public static List<byte> AsList(this byte[] vals)
-    {
-        List<byte> ret = new List<byte>(vals.Length);
-        for(int i = 0; i < vals.Length; i++)
-        {
-            ret.Add(vals[i]);
-        }
-
-        return ret;
-    }
 }
